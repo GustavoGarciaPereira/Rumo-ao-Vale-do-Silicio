@@ -11,5 +11,5 @@ app_name = 'comprador'
 
 urlpatterns = [
 
-    path('/pedido/', PedidoView.as_view(), name='p'),
+    path('pedido/', PedidoView.as_view(), name='p'),
 ]

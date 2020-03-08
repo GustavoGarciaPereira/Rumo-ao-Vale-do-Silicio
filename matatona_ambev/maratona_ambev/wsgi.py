@@ -1,5 +1,5 @@
 """
-WSGI config for matatona_ambev project.
+WSGI config for maratona_ambev project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'matatona_ambev.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'maratona_ambev.settings')
 
 application = get_wsgi_application()
