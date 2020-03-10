@@ -5,6 +5,12 @@
 
     <div class="container">
         <h1>Tela pedido</h1>
-        <a class="btn btn-primary" href="{% url 'comprador:list' %}" role="button">Quero fazer um pedido</a>
+        
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input  class="btn btn-primary" type="submit" value="Quero fazer um pedido">
+            {% comment %} <a class="btn btn-primary" type="submit" href="{% url 'comprador:list' %}" role="button"></a> {% endcomment %}
+        </form>
+        
     </div>
 {% endblock  %}

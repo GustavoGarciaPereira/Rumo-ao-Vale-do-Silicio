@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-print("<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>{}/templates".format(BASE_DIR))
 # Application definition
 
 INSTALLED_APPS = [

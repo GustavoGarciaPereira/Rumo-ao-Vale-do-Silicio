@@ -1,9 +1,12 @@
 from django.urls import path
+from django.views.generic import TemplateView
 
-from .views import EmpresaListView, EmpresaDetailView, EmpresaUpdateView
 
-app_name = 'empresa'
-urlpatterns = [
-    path('listar', EmpresaListView.as_view(), namespace="list"),
 
-]
+
+class PedidoView(TemplateView):
+    template_name = "pedido.html"
+
+
+class ListagemView(TemplateView):
+    template_name = "lista_for.html"
