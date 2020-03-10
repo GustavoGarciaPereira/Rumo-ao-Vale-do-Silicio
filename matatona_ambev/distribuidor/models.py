@@ -9,7 +9,6 @@ class Distribuidor(models.Model):
     nome_distribuidor = models.CharField(max_length=30)
     lat = models.DecimalField(max_digits=8, decimal_places=6)
     lon = models.DecimalField(max_digits=8, decimal_places=6)
-    nome = models.CharField(_('Nome'), max_length=70)
     tel_fixo = models.CharField(_('Telefone Fixo'), max_length=13, blank=True, null=True)
     tel_celular = models.CharField(_('Telefone Celular'), max_length=13, blank=True, null=True)
     cep = models.CharField(_('CEP'), max_length=10, blank=True, null=True)
@@ -21,8 +20,16 @@ class Distribuidor(models.Model):
     complemento = models.CharField(_('Complemento'), max_length=70, blank=True, null=True)
     dt_cadastro = models.DateTimeField(_('Dt. Cadastro'), auto_now_add=True)
     email = models.EmailField(_('E-mail'), blank=True, null=True)
+    
+    def __str__(self):
+        return self.nome_distribuidor
+    
 
 class Estoque(models.Model):
     distribuidor = models.ForeignKey(Distribuidor,on_delete=models.PROTECT)
     nome_produto = models.CharField(max_length=30) 
     quantidade_em_estoque = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return self.nome_produto
+    

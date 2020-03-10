@@ -26,6 +26,7 @@ class PedidoView(FormView):
         qual_quantidade_de_unidade = form.cleaned_data['qual_quantidade_de_unidade']
         print(qual_seu_pedido)
         print(qual_quantidade_de_unidade)
+        #cheese_blog = Blog.objects.get(name="Cheddar Talk")
         #print(form)
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
