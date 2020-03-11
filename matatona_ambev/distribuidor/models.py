@@ -7,8 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 # Create your models here.
 class Distribuidor(models.Model):
     nome_distribuidor = models.CharField(max_length=30)
-    lat = models.DecimalField(max_digits=8, decimal_places=6)
-    lon = models.DecimalField(max_digits=8, decimal_places=6)
+    lat = models.DecimalField(max_digits=8, decimal_places=6, verbose_name= 'Latitude')
+    lon = models.DecimalField(max_digits=8, decimal_places=6, verbose_name= 'Longitude')
     tel_fixo = models.CharField(_('Telefone Fixo'), max_length=13, blank=True, null=True)
     tel_celular = models.CharField(_('Telefone Celular'), max_length=13, blank=True, null=True)
     cep = models.CharField(_('CEP'), max_length=10, blank=True, null=True)

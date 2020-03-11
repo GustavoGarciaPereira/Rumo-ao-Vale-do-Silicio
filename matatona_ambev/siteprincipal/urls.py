@@ -6,4 +6,5 @@ app_name = 'landpage'
 urlpatterns = [
     path('', home, name='home'),
     path('comprador', include('comprador.urls')),
+    path('distribuidor', include('distribuidor.urls')),
 ]
