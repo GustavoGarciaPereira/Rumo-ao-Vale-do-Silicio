@@ -1,0 +1,41 @@
+{% extends 'layoutbase.html' %}
+
+{% block title %}
+	{% 'list-alt' %} Estoque
+{% endblock %}
+
+{% block content %}
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	    <a href="{% url 'distribuidor:estoque_create' %}" class="btn btn-md btn-primary"> Criar um novo produto</a>
+	  </div>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-hover">
+	  		<thead>
+				<th>Distribuidor</th>
+				<th>Produto</th>
+				<th>Quantidade</th>	  			
+	  		</thead>
+	  		<tbody>
+				{% for estoque in object_list %}
+				<tr>
+					<td>{{ estoque.distribuidor }}</td>
+					<td>
+						{% if estoque.nome_produto %}
+							{{ estoque.nome_produto }}
+						{% endif %}
+					</td>
+
+					<td>
+						{% if estoque.quantidade_em_estoque %}
+							{{ estoque.quantidade_em_estoque }}
+						{% endif %}
+					</td>
+
+				</tr>
+			    {% endfor %}
+	  		</tbody>
+		</table>
+	</div>
+{% endblock %}

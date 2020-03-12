@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.conf import settings
 
-from .models import Distribuidor
+from .models import Distribuidor, Estoque
 
 class HomeView(TemplateView):
     template_name = 'distribuidor_home.html'
@@ -20,6 +20,20 @@ class distribuidorCreateView(CreateView):
 
     def get_success_url(self):
         return reverse(self.success_url)
+
+class EstoqueCreateView(CreateView):
+    model = Estoque
+    template_name = "estoque_form.html"
+    fields = ['distribuidor', 'nome_produto', 'quantidade_em_estoque']
+    success_url = 'distribuidor:distribuidor_home'
+
+    def get_success_url(self):
+        return reverse(self.success_url)
+
+class EstoqueListView(CreateView):
+    template_name = "estoque_list.html"
+
+
 
 class PedidoView(TemplateView):
     template_name = "pedido.html"
