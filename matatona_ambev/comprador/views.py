@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.views.generic import TemplateView
+from comprador.forms import PedidoForm
+from django.views.generic.edit import FormView
 
 
 
@@ -13,8 +15,7 @@ class PedidoView(TemplateView):
 class ListagemView(TemplateView):
     template_name = "lista_for.html"
 
-from comprador.forms import PedidoForm
-from django.views.generic.edit import FormView
+
 
 class PedidoView(FormView):
     template_name = "pedido.html"
