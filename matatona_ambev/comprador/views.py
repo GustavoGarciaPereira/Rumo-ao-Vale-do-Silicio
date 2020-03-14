@@ -3,9 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import TemplateView
 from comprador.forms import PedidoForm
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, CreateView
 
-
+from comprador.models import Comprador, Estoque
 
 
 class PedidoView(TemplateView):
@@ -33,3 +33,26 @@ class PedidoView(FormView):
         # It should return an HttpResponse.
         #form.send_email()
         return super().form_valid(form)
+
+class CompradorCreateView(CreateView):
+    model = Comprador
+    template_name = "distribuidor_form.html"
+    fields = ['nome_comprador', 'email', 'tel_fixo','tel_celular','cep','cidade','lat','lon']
+    success_url = 'landpage:home'
+
+    def get_success_url(self):
+        return reverse(self.success_url)
+
+
+class EstoqueCreateView(CreateView):
+    model = Estoque
+    template_name = "estoque_form.html"
+    fields = ['comprador', 'nome_produto', 'quantidade_em_estoque']
+    success_url = 'comprador:p'
+
+    def get_success_url(self):
+        return reverse(self.success_url)
+
+
+class EstoqueListView(CreateView):
+    template_name = "estoque_list.html"
