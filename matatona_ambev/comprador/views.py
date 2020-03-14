@@ -36,7 +36,7 @@ class PedidoView(FormView):
 
 class CompradorCreateView(CreateView):
     model = Comprador
-    template_name = "distribuidor_form.html"
+    template_name = "comprador_form.html"
     fields = ['nome_comprador', 'email', 'tel_fixo','tel_celular','cep','cidade','lat','lon']
     success_url = 'landpage:home'
 
@@ -56,3 +56,7 @@ class EstoqueCreateView(CreateView):
 
 class EstoqueListView(CreateView):
     template_name = "estoque_list.html"
+
+
+class HomeView(TemplateView):
+    template_name = 'comprador_home.html'
