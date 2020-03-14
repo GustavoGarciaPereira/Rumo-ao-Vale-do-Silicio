@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
+from distribuidor.models import Distribuidor
 import os
 from django.utils.translation import ugettext_lazy as _
 #from brutils import cpf as valida_cpf, cnpj as valida_cnpj
@@ -35,4 +36,11 @@ class Estoque(models.Model):
 
     def __str__(self):
         return self.nome_produto
-    
+
+class Pedido(models.Model):
+    qual_seu_pedido = models.CharField(max_length=30)
+    qual_quantidade_de_unidade = models.IntegerField()
+    comprador = models.ForeignKey(Comprador,on_delete=models.PROTECT)
+    distribuidor = models.ForeignKey(Distribuidor,on_delete=models.PROTECT)
+    entregue = models.BooleanField(default=False, blank=True, null=True)
+    data_entrega = models.DateTimeField(blank=True, null=True)

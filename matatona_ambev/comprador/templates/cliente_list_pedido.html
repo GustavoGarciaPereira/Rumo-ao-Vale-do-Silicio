@@ -1,0 +1,35 @@
+{% extends 'core/layoutbase.html' %} 
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+	Listagem de Pedidos Cliente
+{% endblock %}
+
+
+{% block content %}
+
+<table>
+    {% for i in object_list %}
+    <tr>
+        <td>qual_seu_pedido</td>
+        <td>qual_quantidade_de_unidade</td>
+        <td>comprador</td>
+        <td>distribuidor</td>
+        <td>entregue</td>
+        <td>data_entrega</td>
+    </tr>
+
+    <tr>
+        <td>{{ i.qual_seu_pedido }}</td>
+        <td>{{ i.qual_quantidade_de_unidade }}</td>
+        <td>{{ i.comprador }}</td>
+        <td>{{ i.distribuidor }}</td>
+        <td>{{ i.entregue }}</td>
+        <td>{{ i.data_entrega }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -8,7 +8,7 @@
         <a class="btn btn-primary" href="{% url 'comprador:create_comprador' %}" role="button">Cadastrar Comprador</a>
         <a class="btn btn-primary" href="{% url 'comprador:create_estoque' %}" role="button">criar estoque</a>
         
-        <a class="btn btn-primary" href="#" role="button">Link</a>
 
+        <a class="btn btn-primary" href="{% url 'comprador:comprador_pedido_list' %}" role="button">Conferir pedido</a>
     </div>
 {% endblock  %}

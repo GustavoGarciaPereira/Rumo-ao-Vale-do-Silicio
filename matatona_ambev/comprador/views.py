@@ -1,11 +1,11 @@
 from django.shortcuts import render
-
+from django.views.generic import ListView
 # Create your views here.
 from django.views.generic import TemplateView
 from comprador.forms import PedidoForm
-from django.views.generic.edit import FormView, CreateView
-
-from comprador.models import Comprador, Estoque
+from django.views.generic.edit import FormView, CreateView, UpdateView
+from django.urls import reverse
+from comprador.models import Comprador, Estoque, Pedido
 
 
 class PedidoView(TemplateView):
@@ -60,3 +60,18 @@ class EstoqueListView(CreateView):
 
 class HomeView(TemplateView):
     template_name = 'comprador_home.html'
+
+
+#from django.shortcuts import redirect
+class PedidoUpdateEstoque(UpdateView):
+    model = Pedido
+    template_name = 'receber_pedido_form.html'
+#
+#    def form_valid(self, form):
+#        post = form.save(commit=False)
+#        post.save()
+#        return redirect('pk', pk=self.pk)
+
+class LitarPedidoCliente(ListView):
+    model = Pedido
+    template_name = 'cliente_list_pedido.html'
