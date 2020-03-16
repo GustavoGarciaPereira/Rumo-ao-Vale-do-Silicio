@@ -1,0 +1,21 @@
+{% extends 'layoutbase.html' %} 
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+	Fazer Pedido
+{% endblock %}
+
+{% block content %}
+<div class="container">
+        <h1>Fazer Pedido</h1>
+        
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input  class="btn btn-primary" type="submit" value="cadastrar">
+            {% comment %} <a class="btn btn-primary" type="submit" href="{% url 'comprador:list' %}" role="button"></a> {% endcomment %}
+        </form>
+        
+    </div>
+{% endblock %}

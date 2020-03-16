@@ -41,6 +41,6 @@ class Pedido(models.Model):
     qual_seu_pedido = models.CharField(max_length=30)
     qual_quantidade_de_unidade = models.IntegerField()
     comprador = models.ForeignKey(Comprador,on_delete=models.PROTECT)
-    distribuidor = models.ForeignKey(Distribuidor,on_delete=models.PROTECT)
+    distribuidor = models.ForeignKey(Distribuidor,on_delete=models.PROTECT,blank=True, null=True)
     entregue = models.BooleanField(default=False, blank=True, null=True)
     data_entrega = models.DateTimeField(blank=True, null=True)

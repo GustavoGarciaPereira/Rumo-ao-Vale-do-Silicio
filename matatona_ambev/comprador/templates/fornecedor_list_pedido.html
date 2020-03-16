@@ -14,7 +14,7 @@
     
   <thead>
     <tr>
-        <td>qual_seu_pedido</td>
+        <td>nome_distribuidor</td>
         <td>qual_quantidade_de_unidade</td>
         <td>distribuidor</td>
         <td>entregue</td>
@@ -24,16 +24,8 @@
   {% for i in object_list %}
   <tbody>
     <tr>
-        <td>{{ i.qual_seu_pedido }}</td>
-        <td>{{ i.qual_quantidade_de_unidade }}</td>
-        <td>{{ i.distribuidor }}</td>
-        <td> {% if not i.entregue %}
-            Não entregue
-            {% else %}
-                Entregue
-            {% endif %}
+        <td>{{ i.nome_distribuidor }}</td>
 
-        <td>{{ i.data_entrega|default_if_none:"Não entregue" }}</td>
     </tr>
 
   </tbody>
@@ -41,8 +33,3 @@
 </table>
 
 {% endblock %}
-
-
-
-
-
