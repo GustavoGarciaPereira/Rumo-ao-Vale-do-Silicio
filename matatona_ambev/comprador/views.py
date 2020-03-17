@@ -5,8 +5,8 @@ from django.views.generic import TemplateView
 from comprador.forms import PedidoForm
 from django.views.generic.edit import FormView, CreateView, UpdateView
 from django.urls import reverse
-from comprador.models import Comprador, Estoque, Pedido
-from distribuidor.models import Distribuidor
+from comprador.models import Comprador, EstoqueComprador, Pedido
+from distribuidor.models import Distribuidor, EstoqueDistribuidor
 
 class PedidoView(TemplateView):
     template_name = "pedido.html"
@@ -28,7 +28,8 @@ class PedidoView(CreateView):
         qual_quantidade_de_unidade = form.cleaned_data['qual_quantidade_de_unidade']
         print(qual_seu_pedido)
         print(qual_quantidade_de_unidade)
-        self.request.session['pedido'] = qual_quantidade_de_unidade
+        self.request.session['quantidade_pedido'] = qual_quantidade_de_unidade
+        self.request.session['nome_pedido'] = qual_seu_pedido
         #cheese_blog = Blog.objects.get(name="Cheddar Talk")
         #print(form)
         # This method is called when valid form data has been POSTed.
@@ -50,7 +51,7 @@ class CompradorCreateView(CreateView):
 
 
 class EstoqueCreateView(CreateView):
-    model = Estoque
+    model = EstoqueComprador
     template_name = "estoque_form.html"
     fields = ['comprador', 'nome_produto', 'quantidade_em_estoque']
     success_url = 'comprador:p'
@@ -92,14 +93,17 @@ class LitarFornecedoresP(ListView):
     template_name = 'fornecedor_list_pedido.html'
 
     def get_queryset(self):
-
+        estoque_distri = EstoqueDistribuidor.objects.filter(quantidade_em_estoque__gte=self.request.session['quantidade_pedido'],nome_produto__icontains=self.request.session['nome_pedido'])
         print(self.request.session['pedido'])
+        print(estoque_distri)
         #palavra_chave = form.cleaned_data['palavra_chave']
         #tipo = form.cleaned_data['tipo']
         #situacao = form.cleaned_data['situacao']
         #categoria = form.cleaned_data['categoria']
         if self.request.GET:
             qs = super(LitarFornecedoresP, self).get_queryset().filter()
+            t = estoque_distri
         else:
             qs = super(LitarFornecedoresP, self).get_queryset().filter()
-        return qs
+            t = estoque_distri
+        return t

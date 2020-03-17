@@ -25,7 +25,7 @@ class Distribuidor(models.Model):
         return self.nome_distribuidor
     
 
-class Estoque(models.Model):
+class EstoqueDistribuidor(models.Model):
     distribuidor = models.ForeignKey(Distribuidor,on_delete=models.PROTECT)
     nome_produto = models.CharField(max_length=30) 
     quantidade_em_estoque = models.IntegerField(blank=True, null=True)

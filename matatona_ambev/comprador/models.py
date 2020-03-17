@@ -29,7 +29,7 @@ class Comprador(models.Model):
         return self.nome_comprador
     
 
-class Estoque(models.Model):
+class EstoqueComprador(models.Model):
     comprador = models.ForeignKey(Comprador,on_delete=models.PROTECT)
     nome_produto = models.CharField(max_length=30) 
     quantidade_em_estoque = models.IntegerField(blank=True, null=True)
