@@ -17,7 +17,7 @@
         <td>nome_distribuidor</td>
         <td>qual_quantidade_de_unidade</td>
         <td>distribuidor</td>
-        <td>entregue</td>
+        <td>finalizar pedido</td>
         <td>data_entrega</td>
     </tr>
   </thead>
@@ -28,6 +28,9 @@
         <td>{{ i.nome_produto }}</td>
         <td>{{ i.quantidade_em_estoque }}</td>
         <td><a class="btn btn-primary" type="submit" href="{% url 'comprador:list' %}" role="button"></a></td>
+        <td>{{ i.get_absolute_url }}</td>
+
+        
     </tr>
 
   </tbody>

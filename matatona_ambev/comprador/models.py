@@ -34,6 +34,13 @@ class EstoqueComprador(models.Model):
     nome_produto = models.CharField(max_length=30) 
     quantidade_em_estoque = models.IntegerField(blank=True, null=True)
 
+    @property
+    def get_absolute_url(self):
+        return reverse('cliente:pj_update', kwargs={'slug': self.slug})
+
+
+
+
     def __str__(self):
         return self.nome_produto
 
