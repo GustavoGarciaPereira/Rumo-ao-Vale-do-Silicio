@@ -3,7 +3,7 @@ import os
 from django.utils.translation import ugettext_lazy as _
 #from brutils import cpf as valida_cpf, cnpj as valida_cnpj
 
-
+from django.urls import reverse
 # Create your models here.
 class Distribuidor(models.Model):
     nome_distribuidor = models.CharField(max_length=30)
@@ -29,6 +29,11 @@ class EstoqueDistribuidor(models.Model):
     distribuidor = models.ForeignKey(Distribuidor,on_delete=models.PROTECT)
     nome_produto = models.CharField(max_length=30) 
     quantidade_em_estoque = models.IntegerField(blank=True, null=True)
+
+    @property
+    def get_absolute_url2(self):
+        return reverse('comprador:finalizar_pedido_up', kwargs={'pk': self.pk})
+
 
     def __str__(self):
         return self.nome_produto

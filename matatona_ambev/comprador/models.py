@@ -34,9 +34,6 @@ class EstoqueComprador(models.Model):
     nome_produto = models.CharField(max_length=30) 
     quantidade_em_estoque = models.IntegerField(blank=True, null=True)
 
-    @property
-    def get_absolute_url(self):
-        return reverse('cliente:pj_update', kwargs={'slug': self.slug})
 
 
 
@@ -51,3 +48,7 @@ class Pedido(models.Model):
     distribuidor = models.ForeignKey(Distribuidor,on_delete=models.PROTECT,blank=True, null=True)
     entregue = models.BooleanField(default=False, blank=True, null=True)
     data_entrega = models.DateTimeField(blank=True, null=True)
+
+
+    def __str__(self):
+        return self.qual_seu_pedido
