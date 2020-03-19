@@ -1,5 +1,5 @@
 from django.db import models
-
+from distribuidor.models import EstoqueDistribuidor
 # Create your models here.
 from django.db import models
 from distribuidor.models import Distribuidor
@@ -52,3 +52,20 @@ class Pedido(models.Model):
 
     def __str__(self):
         return self.qual_seu_pedido
+
+
+    def save(self, *args, **kwargs):
+        #se pedido for finalizado
+        if self.entregue == True :
+            #pega o id de distribuidor
+            objeto_distribuidor = self.distribuidor
+            #pega o id de estoque utilizando o distribuidor
+            objeto_estoque = EstoqueDistribuidor.objects.filter(distribuidor = objeto_distribuidor )
+            #atualiza o valor no estoque de acordo com a quantidade do pedido
+            quantidade = objeto_estoque.quantidade_em_estoque
+            quantidade = quantidade - self.qual_quantidade_de_unidade
+            objeto_estoque.update(quantidade_em_estoque = quantidade)
+            #salva no models estoqueDistribuidor
+            super(EstoqueDistribuidor,objeto_estoque).save(*args,**kwargs)      
+        
+        super(Pedido, self).save(*args, **kwargs)
