@@ -16,7 +16,7 @@ class HomeView(TemplateView):
 class distribuidorCreateView(CreateView):
     model = Distribuidor
     template_name = "distribuidor_form.html"
-    fields = ['nome_distribuidor', 'email', 'tel_fixo','tel_celular','cep','cidade','lat','lon']
+    fields = ['fim_hora_entrega','inicio_hora_entrega','nome_distribuidor', 'email', 'tel_fixo','tel_celular','cep','cidade','lat','lon']
     success_url = 'landpage:home'
 
     def get_success_url(self):
@@ -42,14 +42,17 @@ class PedidoView(TemplateView):
 class ListagemView(TemplateView):
     template_name = "distribuidor_list.html"
 
-class ListagemCompradoresView(TemplateView):
+class ListagemCompradoresView(ListView):
     model = Pedido
     template_name = "distribuidor_compradores_list.html"
 
-    '''
+
     #filtrar pelo usuario logado    
+    # def get_queryset(self):
+    #     queryset = super(SubmissaoListView, self).get_queryset()
+    #     queryset = queryset.filter(responsavel = self.request.user)
+    #     return queryset
     def get_queryset(self):
-        queryset = super(SubmissaoListView, self).get_queryset()
-        queryset = queryset.filter(responsavel = self.request.user)
+        queryset = super(ListagemCompradoresView, self).get_queryset()
+        queryset = queryset.filter(distribuidor__id=4)
         return queryset
-    '''

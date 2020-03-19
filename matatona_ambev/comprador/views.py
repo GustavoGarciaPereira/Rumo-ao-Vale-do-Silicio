@@ -133,25 +133,24 @@ class LitarFornecedoresP(ListView):
     #     context = super(LitarFornecedoresP, self).get_context_data(**kwargs)
     #     if self.request.POST:
     #         context['Pedido'] = Pedido.objects.all()
-'''
-    #     return context
-   def get_queryset(self):
-        estoque_distri = EstoqueDistribuidor.objects.filter(quantidade_em_estoque__gte=self.request.session['quantidade_pedido'],nome_produto__icontains=self.request.session['nome_pedido'])
-        #self.request.session['quantidade_pedido'] = qual_quantidade_de_unidade
-        #self.request.session['nome_pedido'] = qual_seu_pedido
-        for i in estoque_distri:
-            print(i.distribuidor)
 
-        
-        #palavra_chave = form.cleaned_data['palavra_chave']
-        #tipo = form.cleaned_data['tipo']
-        #situacao = form.cleaned_data['situacao']
-        #categoria = form.cleaned_data['categoria']
-        if self.request.GET:
-            qs = super(LitarFornecedoresP, self).get_queryset().filter()
-            t = estoque_distri
-        else:
-            qs = super(LitarFornecedoresP, self).get_queryset().filter()
-            t = estoque_distri
-        return t
-'''
+    #     return context
+    def get_queryset(self):
+            estoque_distri = EstoqueDistribuidor.objects.filter(quantidade_em_estoque__gte=self.request.session['quantidade_pedido'],nome_produto__icontains=self.request.session['nome_pedido'])
+            #self.request.session['quantidade_pedido'] = qual_quantidade_de_unidade
+            #self.request.session['nome_pedido'] = qual_seu_pedido
+            for i in estoque_distri:
+                print(i.distribuidor)
+
+            
+            #palavra_chave = form.cleaned_data['palavra_chave']
+            #tipo = form.cleaned_data['tipo']
+            #situacao = form.cleaned_data['situacao']
+            #categoria = form.cleaned_data['categoria']
+            if self.request.GET:
+                qs = super(LitarFornecedoresP, self).get_queryset().filter()
+                t = estoque_distri
+            else:
+                qs = super(LitarFornecedoresP, self).get_queryset().filter()
+                t = estoque_distri
+            return t

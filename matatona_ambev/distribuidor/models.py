@@ -21,6 +21,10 @@ class Distribuidor(models.Model):
     dt_cadastro = models.DateTimeField(_('Dt. Cadastro'), auto_now_add=True)
     email = models.EmailField(_('E-mail'), blank=True, null=True)
     
+    inicio_hora_entrega = models.TimeField(_('Inicio Periodo Entrada'),auto_now=False, auto_now_add=False,blank=True,
+    null=True)
+    fim_hora_entrega = models.TimeField(_('Fim Periodo Entrada'),auto_now=False, auto_now_add=False,blank=True,
+    null=True)
     def __str__(self):
         return self.nome_distribuidor
     
