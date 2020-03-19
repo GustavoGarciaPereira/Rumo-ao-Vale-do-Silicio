@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>Simple Map</title>
@@ -35,4 +35,90 @@
     </script>
     
   </body>
-</html>
+</html> -->
+
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <title>Teste GoogleMaps API</title>
+  <style>
+    
+    #map {
+      height: 100%;
+    }
+    
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+  </style>
+</head>
+<body>
+
+  
+  <div id="map"></div>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwlRGyGUw2ypjQtHCZWY89JAIVHcBHI3U&callback=initMap"></script> </script>
+  </body>
+
+<script>
+function initMap() 
+      {
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        
+        /*
+        --  MUDA A COR DA POLYLINE -> var directionsDisplay = new google.maps.DirectionsRenderer({ polylineOptions: { strokeColor: "blue" } });
+        */
+        
+        var directionsService = new google.maps.DirectionsService;        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          
+          disableDefaultUI: true,
+          zoom: 14,
+          zoomControl: false,
+          scaleControl: true,
+          durationInTraffic: true,
+          streetViewControl: true,
+          suppressMarkers: true,
+
+          center: {lat: -29.691387, lng: -53.819597}, // Paulista
+        });
+        
+        directionsDisplay.setMap(map);
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        
+        //var trafficLayer = new google.maps.TrafficLayer();
+        //trafficLayer.setMap(map);
+    
+        var noPoi = [
+        {
+            featureType: "poi",
+            stylers: [
+              { visibility: "on" }
+            ]   
+          }
+        ];
+        map.setOptions({styles: noPoi});
+        
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        
+        directionsService.route({
+          origin: {lat: -29.68835101, lng: -53.81017685},  // Paulista inicia.
+          destination: {lat: -29.69737283, lng: -53.79481316},  // Paulista final.
+          travelMode: google.maps.DirectionsTravelMode.DRIVING
+       
+        },function(response, status) {
+          
+          if (status == google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setOptions({ preserveViewport: true });
+              directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+</script>
