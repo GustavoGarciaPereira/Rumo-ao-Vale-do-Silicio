@@ -14,7 +14,7 @@
     
   <thead>
     <tr>
-        <td> ID pedido</td>
+        <td>ID pedido</td>
         <td>Comprador</td>
         <td>Distribuidor</td>
         <td>Pedido</td>
@@ -32,6 +32,14 @@
         <td>{{ i.data_entrega }}</td>
         <td>{{ i.entregue }}</td>       
         <td><a class="btn btn-primary" type="submit" href="http://127.0.0.1:8000/comprador/listagem/" role="button"></a></td>
+        <td>{{ i.data_entrega|default_if_none:"Não entregue" }}</td>
+        <td> {% if not i.entregue %}
+            Não entregue
+            {% else %}
+                Entregue
+            {% endif %}
+        </td>   
+        <td><a class="btn btn-primary" type="submit" href="{{ i.get_absolute_url2 }}" role="button"></a></td>
     </tr>
 
   </tbody>
