@@ -14,11 +14,11 @@
     
   <thead>
     <tr>
-        <td>nome_distribuidor</td>
-        <td>qual_quantidade_de_unidade</td>
-        <td>distribuidor</td>
-        <td>finalizar pedido</td>
+        <td>Nome do distribuidor</td>
+        <td>Produto</td>
+        <td>Quantidade em estoque</td>
         <td>data_entrega</td>
+        <td>finalizar pedido</td>
     </tr>
   </thead>
   {% for i in object_list %}
@@ -27,11 +27,8 @@
         <td>{{ i.distribuidor.nome_distribuidor }}</td>
         <td>{{ i.nome_produto }}</td>
         <td>{{ i.quantidade_em_estoque }}</td>
+        <td>{{ i.data_entrega }}</td>
         <td><a class="btn btn-primary" type="submit" href="{{ i.get_absolute_url2 }}" role="button"></a></td>
-        <td>{{ i.get_absolute_url }}</td>
-        <td><p>{{ i.pk }}</p></td>
-
-        
     </tr>
 
   </tbody>
