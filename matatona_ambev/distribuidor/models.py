@@ -34,6 +34,9 @@ class EstoqueDistribuidor(models.Model):
     def get_absolute_url2(self):
         return reverse('comprador:finalizar_pedido_up', kwargs={'pk': self.pk})
 
+    def save(self, *args, **kwargs):
+            
+        super(EstoqueDistribuidor, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.nome_produto
