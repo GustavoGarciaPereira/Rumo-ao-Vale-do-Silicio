@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.conf import settings
 
 from .models import Distribuidor, EstoqueDistribuidor
+from comprador.models import Pedido
 
 class HomeView(TemplateView):
     template_name = 'distribuidor_home.html'
@@ -34,10 +35,21 @@ class EstoqueListView(CreateView):
     template_name = "estoque_list.html"
 
 
-
 class PedidoView(TemplateView):
     template_name = "pedido.html"
 
 
 class ListagemView(TemplateView):
     template_name = "distribuidor_list.html"
+
+class ListagemCompradoresView(TemplateView):
+    model = Pedido
+    template_name = "distribuidor_compradores_list.html"
+
+    '''
+    #filtrar pelo usuario logado    
+    def get_queryset(self):
+        queryset = super(SubmissaoListView, self).get_queryset()
+        queryset = queryset.filter(responsavel = self.request.user)
+        return queryset
+    '''

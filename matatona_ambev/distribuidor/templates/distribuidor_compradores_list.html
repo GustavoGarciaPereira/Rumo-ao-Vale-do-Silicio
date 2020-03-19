@@ -1,0 +1,41 @@
+{% extends 'core/layoutbase.html' %} 
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+	Listagem de clientes do fornecedor x
+{% endblock %}
+
+
+{% block content %}
+
+<table class="table">
+    
+  <thead>
+    <tr>
+        <td> ID pedido</td>
+        <td>Comprador</td>
+        <td>Distribuidor</td>
+        <td>Pedido</td>
+        <td>Data da entrega</td>
+        <td>Entrega</td>
+    </tr>
+  </thead>
+  {% for i in object_list %}
+  <tbody>
+    <tr>
+        <td><p>{{ i.pk }}</p></td>  
+        <td>{{ i.comprador.nome_comprador }}</td>
+        <td>{{ i.distribuidor.nome_distribuidor }}</td>
+        <td>{{ i.qual_seu_pedido }}</td>
+        <td>{{ i.data_entrega }}</td>
+        <td>{{ i.entregue }}</td>       
+        <td><a class="btn btn-primary" type="submit" href="{{ i.get_absolute_url2 }}" role="button"></a></td>
+    </tr>
+
+  </tbody>
+      {% endfor %}
+</table>
+
+{% endblock %}
