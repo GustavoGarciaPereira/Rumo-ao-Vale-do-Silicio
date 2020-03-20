@@ -160,3 +160,4 @@ class LitarFornecedoresP(ListView):
                 qs = super(LitarFornecedoresP, self).get_queryset().filter()
                 t = estoque_distri
             return t
+
