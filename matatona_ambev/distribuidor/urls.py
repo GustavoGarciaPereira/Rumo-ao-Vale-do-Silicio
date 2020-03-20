@@ -2,7 +2,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
 from .views import distribuidorCreateView,ListagemView,HomeView
-from .views import EstoqueCreateView, EstoqueListView,ListagemCompradoresView
+from .views import EstoqueCreateView, EstoqueListView,ListagemCompradoresView,DetalheCompradoresListView
 app_name = 'distribuidor'
 urlpatterns = [
     path('home/', HomeView.as_view(), name='distribuidor_home'),
@@ -11,4 +11,5 @@ urlpatterns = [
     path('cadastrar_estoque/', EstoqueCreateView.as_view(), name='estoque_create'),
     path('listar_estoque/', EstoqueListView.as_view(), name='estoque_list'),
     path('listar_compradores/', ListagemCompradoresView.as_view(), name='listagem_compradores_list'),
+    path('detalhe_compradores_listar/', DetalheCompradoresListView.as_view(), name='distribuidor_detail'),
 ]

@@ -3,7 +3,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from .views import PedidoView, ListagemView, PedidoView, CompradorCreateView, EstoqueCreateView, HomeView, PedidoUpdateEstoque, LitarPedidoCliente, LitarFornecedoresP, PedidoUpdateView
-
+from .views import PedidoUpdatePPView
 
 app_name = 'comprador'
 urlpatterns = [
@@ -17,6 +17,7 @@ urlpatterns = [
     path('lista_pedido_comprador/', LitarPedidoCliente.as_view(), name='comprador_pedido_list'),
     path('litar_fornecedores_p/', LitarFornecedoresP.as_view(), name='litar_fornecedores_p'),
 
-    path('finalizar_pedido/<int:pk>/', PedidoUpdateView.as_view(), name='finalizar_pedido_up')
+    path('finalizar_pedido/<int:pk>/', PedidoUpdateView.as_view(), name='finalizar_pedido_up'),
+    path('chegou_pedido/<int:pk>/', PedidoUpdatePPView.as_view(), name='uppp')
 ]
 

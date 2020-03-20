@@ -9,5 +9,5 @@ from comprador.models import Pedido
 class PedidoForm(forms.ModelForm):
     class Meta:
         model = Pedido
-        exclude = ('entregue','data_entrega')
+        exclude = ('entregue','data_entrega','distribuidor')
 

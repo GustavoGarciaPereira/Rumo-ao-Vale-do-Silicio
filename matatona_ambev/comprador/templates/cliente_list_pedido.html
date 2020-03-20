@@ -19,6 +19,7 @@
         <td>Distribuidor</td>
         <td>Entregue</td>
         <td>Data da entrega</td>
+        <td>Pedido foi entregue</td>
     </tr>
   </thead>
   {% for i in object_list %}
@@ -34,6 +35,9 @@
             {% endif %}
 
         <td>{{ i.data_entrega|default_if_none:"Não entregue" }}</td>
+        
+        <td><a class="btn btn-primary" href="{{ i.get_absolutettt_url }}" role="button">Pedido Chegou</a></td>
+        
     </tr>
 
   </tbody>

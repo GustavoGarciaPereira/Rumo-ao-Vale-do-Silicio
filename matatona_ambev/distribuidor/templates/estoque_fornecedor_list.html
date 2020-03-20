@@ -1,0 +1,35 @@
+{% extends 'core/layoutbase.html' %} 
+
+{% block actions %}
+{% endblock %}
+
+{% block title %}
+	Listagem Estoque do fornecedor
+  
+{% endblock %}
+
+{% block content %}
+
+<table class="table">
+    
+  <thead>
+    <tr>
+        <td>Nome do Distribuidor</td>
+        <td>Nome Do Produto</td>
+        <td>Quantidade em Estoque</td>
+    </tr>
+  </thead>
+  {% for i in object_list %}
+  <tbody>
+    <tr>
+        <td>{{ i.distribuidor }}</td>
+        <td>{{ i.nome_produto }}</td>
+        <td>{{ i.quantidade_em_estoque }}</td>
+        
+    </tr>
+
+  </tbody>
+      {% endfor %}
+</table>
+
+{% endblock %}

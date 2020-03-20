@@ -17,7 +17,7 @@
         <td>Nome do distribuidor</td>
         <td>Produto</td>
         <td>Quantidade em estoque</td>
-        <td>data_entrega</td>
+        <td>Periodo De entrega</td>
         <td>finalizar pedido</td>
     </tr>
   </thead>
@@ -27,7 +27,7 @@
         <td>{{ i.distribuidor.nome_distribuidor }}</td>
         <td>{{ i.nome_produto }}</td>
         <td>{{ i.quantidade_em_estoque }}</td>
-        <td>{{ i.data_entrega }}</td>
+        <td>{{ i.distribuidor.inicio_hora_entrega }} {{ i.distribuidor.fim_hora_entrega }}</td>
         <td><a class="btn btn-primary" type="submit" href="{{ i.get_absolute_url2 }}" role="button"></a></td>
     </tr>
 

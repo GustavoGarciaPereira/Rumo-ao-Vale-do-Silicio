@@ -85,6 +85,44 @@ class PedidoUpdateView(UpdateView):
 
 
 
+
+class PedidoUpdatePPView(UpdateView):
+    model = Pedido
+    template_name = "pedido.html"
+    
+
+    fields = ['qual_seu_pedido','qual_quantidade_de_unidade','comprador','distribuidor','entregue','data_entrega']
+
+    #success_url = 'http://127.0.0.1:8000/comprador/listagem/'
+    success_url = 'landpage:home'
+
+    # def get_object(self, queryset=None):
+    #     slug = self.kwargs.get(self.slug_url_kwarg)
+    #     try:
+    #         obj = Pedido.objects.get(pk=self.request.session['pedido'])
+    #         obj.distribuidor = Distribuidor.objects.get(pk=4)
+    #     except:
+    #         raise Http404("Pedido não localizado")
+    #     return obj
+    # def get_object(self, queryset=None):
+    #     slug = self.kwargs.get(self.slug_url_kwarg)
+    #     try:
+    #         obj = ClientePF.objects.get(slug=slug, empresa=self.request.session['empresa'])
+    #     except:
+    #         raise Http404("Cliente não localizado")
+    #     return obj
+
+
+    def form_valid(self, form):
+
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse(self.success_url)
+
+
+
+
 class CompradorCreateView(CreateView):
     model = Comprador
     template_name = "comprador_form.html"
@@ -100,6 +138,11 @@ class EstoqueCreateView(CreateView):
     template_name = "estoque_form.html"
     fields = ['comprador', 'nome_produto', 'quantidade_em_estoque']
     success_url = 'comprador:p'
+
+    def get_initial(self):
+        comprador = Comprador.objects.get(pk=1)
+
+        return {'comprador': comprador}
 
     def get_success_url(self):
         return reverse(self.success_url)

@@ -6,7 +6,7 @@ from distribuidor.models import Distribuidor
 import os
 from django.utils.translation import ugettext_lazy as _
 #from brutils import cpf as valida_cpf, cnpj as valida_cnpj
-
+from django.urls import reverse
 
 # Create your models here.
 class Comprador(models.Model):
@@ -49,6 +49,9 @@ class Pedido(models.Model):
     entregue = models.BooleanField(default=False, blank=True, null=True)
     data_entrega = models.DateTimeField(blank=True, null=True)
 
+    @property
+    def get_absolutettt_url(self):
+        return reverse('comprador:uppp', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.qual_seu_pedido
