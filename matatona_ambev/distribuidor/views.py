@@ -54,5 +54,5 @@ class ListagemCompradoresView(ListView):
     #     return queryset
     def get_queryset(self):
         queryset = super(ListagemCompradoresView, self).get_queryset()
-        queryset = queryset.filter(distribuidor__id=1)
+        queryset = queryset.filter(distribuidor__id=4)
         return queryset

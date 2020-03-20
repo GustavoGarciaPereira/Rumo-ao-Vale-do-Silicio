@@ -28,9 +28,7 @@
         <td><p>{{ i.pk }}</p></td>  
         <td>{{ i.comprador.nome_comprador }}</td>
         <td>{{ i.distribuidor.nome_distribuidor }}</td>
-        <td>{{ i.qual_seu_pedido }}</td>
-        <td>{{ i.data_entrega }}</td>
-        <td>{{ i.entregue }}</td>       
+        <td>{{ i.qual_seu_pedido }}</td>    
         <td><a class="btn btn-primary" type="submit" href="http://127.0.0.1:8000/comprador/listagem/" role="button"></a></td>
         <td>{{ i.data_entrega|default_if_none:"Não entregue" }}</td>
         <td> {% if not i.entregue %}
@@ -39,7 +37,6 @@
                 Entregue
             {% endif %}
         </td>   
-        <td><a class="btn btn-primary" type="submit" href="{{ i.get_absolute_url2 }}" role="button"></a></td>
     </tr>
 
   </tbody>

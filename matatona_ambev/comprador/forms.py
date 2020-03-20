@@ -10,3 +10,4 @@ class PedidoForm(forms.ModelForm):
     class Meta:
         model = Pedido
         exclude = ('entregue','data_entrega')
+

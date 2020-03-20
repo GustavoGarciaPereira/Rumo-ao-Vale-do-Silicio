@@ -33,6 +33,7 @@ class PedidoView(CreateView):
 
         self.request.session['quantidade_pedido'] = qual_quantidade_de_unidade
         self.request.session['nome_pedido'] = qual_seu_pedido
+        form.comprador = Comprador.objects.get(pk=1)
         #self.request.session['pedido'] = self
         #cheese_blog = Blog.objects.get(name="Cheddar Talk")
         #print(form)
@@ -41,6 +42,10 @@ class PedidoView(CreateView):
         #form.send_email()
 
         return super().form_valid(form)
+    def get_initial(self):
+        comprador = Comprador.objects.get(pk=1)
+
+        return {'comprador': comprador}
 
     def get_success_url(self):
         self.request.session['pedido'] = self.object.pk
@@ -58,6 +63,7 @@ class PedidoUpdateView(UpdateView):
         slug = self.kwargs.get(self.slug_url_kwarg)
         try:
             obj = Pedido.objects.get(pk=self.request.session['pedido'])
+            obj.distribuidor = Distribuidor.objects.get(pk=4)
         except:
             raise Http404("Pedido não localizado")
         return obj
