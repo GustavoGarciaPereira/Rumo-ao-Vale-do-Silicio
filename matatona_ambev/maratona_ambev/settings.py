@@ -78,28 +78,14 @@ WSGI_APPLICATION = 'maratona_ambev.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#    }
-#}
-
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1',            'nameofapp.herokuapp.com']
-
 DATABASES = {
-
     'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-
 }
 
-
+ALLOWED_HOSTS = ['https://testegustavogarcia.herokuapp.com/']
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -143,5 +129,3 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 
-import django_heroku
-django_heroku.settings(locals())
