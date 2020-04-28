@@ -1,1 +1,1 @@
-web: gunicorn maratona_ambev.wsgi
+web: gunicorn maratona_ambev.wsgi --log-file -
