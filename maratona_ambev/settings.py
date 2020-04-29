@@ -126,19 +126,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_TMP = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-os.makedirs(STATIC_TMP, exist_ok=True)
+
+
+
 # Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    
-    os.path.join(BASE_DIR, 'static'),
-)
 
 # Activate Django-Heroku.
+STATIC_ROOT = os.path.join(BASE_DIR, 'maratona_ambev/static')
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'utils.storage.ForgivingManifestStaticFilesStorage'
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/media/'
+
+
+
+
 django_heroku.settings(locals())
 
